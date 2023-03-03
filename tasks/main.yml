@@ -9,11 +9,17 @@
 - name: Role foolean/rsh
   block:
 
-    - name: Ensure rsh client is not installed (CIS)
+    - name: Set OS variables
+      ansible.builtin.include_vars:
+        file: "{{ item }}"
+      with_first_found:
+        - "{{ ansible_os_family|lower }}.yml"
+        - "default.yml"
+
+    - name: CIS | Ensure rsh client is not installed
       become: true
       ansible.builtin.package:
-        name:
-          - 'rsh'
+        name: "{{ rsh_packages }}"
         state: absent
 
   # Tags to be applied to this role (block)

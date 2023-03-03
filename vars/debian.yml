@@ -1,0 +1,10 @@
+# Copyright (c) 2023, Bennett Samowich <bennett@foolean.org>
+# All rights reserved
+# SPDX short identifier: BSD-3-Clause
+---
+
+# rsh_packages
+#   List of packages to be installed/removed
+rsh_packages:
+  - 'rsh-client'
+  - 'rsh-server'
